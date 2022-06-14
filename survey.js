@@ -1,40 +1,37 @@
 const readline = require('readline');
+//provided by instructions
 
-//create object for supplied questions
-const questions = {
-  0: "What's your name? Nicknames are also acceptable :)",
-  1: "What's an activity you like doing?",
-  2: "What do you listen to while doing that?",
-  3: "Which meal is your favourite (eg: dinner, brunch, etc.)",
-  4: "What's your favourite thing to eat for that meal?",
-  5: "Which sport is your absolute favourite?",
-  6: "What is your superpower? In a few words, tell us what you are amazing at!"
-}
-//create object for answers
-
-const answers = {
-  0: "",
-  1: "",
-  2: "",
-  3: "",
-  4: "",
-  5: "",
-  6: ""
-};
-
-//original code from instructions
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-const surveyPromt = () => {
-  
-};
+let profile = [];
 
-// commented out the original code from instructions
-// rl.question('What do you think of Node.js?', (answer) => {
-//   console.log(`Thank you for your valuable feedback: ${answer}`);
-
-//   rl.close();
-// });
+rl.question(`What's your name? Nicknames are also acceptable :) `, (answer) => {
+  profile.push(`My name is ${answer}`);
+  rl.question(`What activities do you enjoy? `, (answer) => {
+    profile.push(`I enjoy ${answer}`);
+    rl.question(`What is your favorite kind of music? `, (answer) => {
+      profile.push(`I love to listen to ${answer}`);
+      rl.question('Which meal of the day is your favourite? ', (answer) => {
+        profile.push(`${answer} is my favourite meal of the day.`);
+     
+        rl.question(`What is your favourite food? `, (answer) => {
+          profile.push(`My favourite food is ${answer}`);
+       
+          rl.question('Which sport is your favourite? ', (answer) => {
+            profile.push(`I love ${answer}`);
+          
+            rl.question('What is your superpower? In a few words, tell us what you are amazing at! ', (answer) => {
+              profile.push(`My superpower is ${answer}!`);
+              console.log(profile);
+              rl.close();
+            });
+          });
+        });
+      });  
+    }); 
+  });
+});
+//OMG IT WORKS DONT CHANGE ANYTHING
